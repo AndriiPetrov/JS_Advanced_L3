@@ -1,4 +1,4 @@
-var pattern = /\d{1,2} [\+\*\\-] \d{1,2}/
+var pattern = /\d{1,2} [+*/-] \d{1,2}/
 var text = "20 + 30"
 var res = text.match(pattern);
 document.write(res + "<br>");

@@ -1,28 +1,31 @@
-function getQueryString(){
-    var args = {};
+window.onload = function print() {
 
-    var query = location.search.substring(1);
-    var pairs = query.split("&");
+    var args = getElements();
+    var count = 0;
+    var e = document.getElementById("output");
 
-    for(var i = 0; i < pairs.length; i++){
-        var pos= pairs[i].indexOf("=");
-        if(pos== -1){
-            continue;
-        }
-
-        var argname = pairs[i].substring(0, pos);
-        var value = pairs[i].substring(pos + 1);
-
-        args[argname] =value;
+    for(var i = 0; i < args.length; i++){
+        count+=args[i];
     }
 
-    return args;
+    e.innerHTML = "Переданное значение " + count;
+}
+function getElements() {
+// Пустой массив
+var e = [];
+var elements = location.search.substring(1);
+var arr = elements.split("&");
+
+for (var i = 0; i < arr.length; i++) {
+    var pos = arr[i].indexOf('=');
+    if (pos == -1) {
+        continue;
+    }
+    var value = arr[i].substring(pos + 1);
+
+    e[i] = parseFloat(value);
+
 }
 
-function print(){
-    var args = getQueryString();
-    var e = document.createElement("p");
-
-    e.innerHtML = args.a + args.b;
-    document.body.appendChild(e);
+return e;
 }
